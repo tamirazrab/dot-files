@@ -1,0 +1,137 @@
+[WEATHER_SIGNALER]
+command=~/.config/i3blocks/weather/weather_signaler
+interval=once
+
+[WEATHER]
+command=~/.config/i3blocks/weather/weather_info.sh
+interval=300
+color=#FEC925
+signal=2
+
+
+
+
+
+[wifi]
+command=~/.local/share/i3blocks-modules/wifi -f ' {ssid} ({signal}%)'
+instance=wlp0s20f3
+interval=2
+markup=pango
+
+# command=/home/tcells/.local/share/i3blocks-modules/backlight
+
+
+
+# output: ☼ 100%
+[backlight]
+command=/home/tcells/.local/share/i3blocks-modules/backlight
+instance=intel_backlight
+interval=2
+markup=pango
+
+
+#[DISK]
+#command=df -h / | awk '/\//{ printf(" 💾 %4s/%s \n", $4, $2) }'
+#interval=2
+#color=#C9E3DB
+
+[disk]
+command=~/.local/share/i3blocks-modules/disk -f " {free} {funit}iB / {total} {tunit}iB ({pused}%)" -tc '{pfree}' '<' 20 -tc '{pfree}' '<' 10
+instance=/
+interval=30
+markup=pango
+
+[cputemp]
+command=~/.local/share/i3blocks-modules/cputemp -tg '{temp}' '<' 71 -tw '{temp}' '>' 70 -tc '{temp}' '>' 90
+instance=Core 0
+interval=2
+markup=pango
+
+
+#[CPU]
+#full_text= CPU:  0.00% 
+#command=~/.config/i3blocks/cpu/cpu_info.sh
+#interval=repeat
+color=#00B4EB
+
+# Uptime in hh:mm format. If seconds value is desired as well,
+# append '-showSeconds' flag to command.
+#[uptime]
+#label=
+#command=~/.config/i3blocks/uptime/uptime.sh
+#interval=60
+#color=#dddddd
+
+[cpu_usage]
+interval=1
+command=~/.config/i3blocks/cpu/cpu_usage.sh
+min_width=100%
+
+[MEM]
+command=free -h | awk '/Mem:/ { printf(" 🐏 %5s/%s \n", $3, $2) }'
+interval=1
+color=#FEC925
+
+
+
+#[battery-plus]
+##command=~/.config/i3blocks/battery/battery-plus.sh
+#markup=pango
+#instance=BAT0
+#interval=30
+#_PERCENT=&#x25;
+#_HIDE_IF_CHARGED=false
+#_SYMBOLS_ONLY=false
+#_HIDE_PERCENTAGE=false
+#_HIDE_TIME_REMAINING=false
+#_HIDE_TIME_TO_FULL=false
+#_SHOW_CHARGE_DIRECTION=true
+#_CAPACITY_ALERT=55
+#_CRITICAL_ACTION=notify
+##_LOW_ACTION=notify
+#_NOTIFY_PROGRAM=dunstify
+#_NOTIFY_EXPIRES=1500
+#_NOTIFY_THROTTLE=120
+##_COLOR_FULLY_CHARGED=
+#_COLOR_CHARGING=yellow
+#_COLOR_DISCHARGING=orange
+#_COLOR_PENDING=blue
+##_COLOR_ERROR=red
+#_COLOR_BATTERY=white
+#_COLOR_ALERT=orange
+#_COLOR_DIRECTIONAL_UP=green
+##_COLOR_DIRECTIONAL_DOWN=orange
+#_COLOR_GRADIENT_START=#0000FF
+#_COLOR_GRADIENT_END=#FF0000
+##_SYMBOL_FULLY_CHARGED=
+#_SYMBOL_CHARGING=&#xf0e7;
+#_SYMBOL_DISCHARGING=
+#_SYMBOL_UNKNOWN=&#xf128;
+#_SYMBOL_PENDING=&#xf254;
+#_SYMBOL_ERROR=&#xf00d;
+#_SYMBOL_ALERT=&#xf071;
+#_SYMBOf_BATT_100=&#xf240;
+#_SYMBOL_BATT_75=&#xf241;
+#_SYMBOL_BATT_50=&#xf242;
+#_SYMBOL_BATT_25=&#xf243;
+#_SYMBOL_BATT_0=&#xf244;
+#_SYMBOL_DIRECTION_UP=&#8593;
+#_SYMBOL_DIRECTION_DOWN=&#8595;
+
+
+
+
+[battery]
+command=~/.local/share/i3blocks-modules/battery -fe '{percent}' '<' 90 ' {percent}% ({time})' -fe '{percent}' '<' 75 ' {percent}% ({time})' -fe '{percent}' '<' 60 ' {percent}% ({time})' -fe '{percent}' '<' 35 ' {percent}% ({time})' -fe '{percent}' '<' 5 ' {percent}% ({time})' -fe '{status}' '=' '^charging' '⚡ {percent}% ({time})' -fe '{status}' '=' 'full' ' {percent}%' -tg '{status}' '=' 'full' -tg '{percent}' '=' 100 -ti '{status}' '=' '^charging' -tw '{percent}' '<' 30 -tc '{percent}' '<' 5
+instance=Battery 0
+interval=1
+markup=pango
+
+[TIME_DATE]
+command=date +" %a, %d %b - %I:%M:%S"
+interval=1
+
+
+
+
+
